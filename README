@@ -3,6 +3,15 @@ Plugin to provide subversion support to Sublimetext2
 
 Written by Timmy Sjöstedt and Patrik Ring
 
+DEPENDENCIES
+	subversion installed and in your PATH
+	xargs (for "add" functionality)
+
+COMPATIBILITY
+	Linux, Mac OSX, windows
+
+	"add" is currently broken in Mac OSX and Windows
+
 INSTALL
 	1. Add the file subversion.py to (...)/Packages/User
 
