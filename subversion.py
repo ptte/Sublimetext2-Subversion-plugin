@@ -29,7 +29,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
 			sublime.error_message("File is not saved")
 			return
 		
-		if self.settings.get('usefolder') != False: # Should we use a folder?
+		if self.settings.get('usefolder') == True: # Should we use a folder?
 			for folder in folders:
 				if filename.find(folder) != -1:
 					path = folder
