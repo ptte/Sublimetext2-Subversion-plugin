@@ -1,7 +1,7 @@
 ##
 ## Subversion for Sublime Text 2
-## version 0.1
-## by iostream
+## @version 0.2
+## @author Timmy Sjöstedt, Patrik Ring
 ##
 
 import sublime, sublime_plugin, subprocess
