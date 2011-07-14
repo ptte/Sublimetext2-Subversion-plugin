@@ -1,7 +1,9 @@
 ##
 ## Subversion for Sublime Text 2
 ## @version 0.2
-## @author Timmy Sjöstedt, Patrik Ring
+## @author Timmy Sjöstedt
+## @author Patrik Ring
+## @license GPL
 ##
 
 import sublime, sublime_plugin, subprocess
