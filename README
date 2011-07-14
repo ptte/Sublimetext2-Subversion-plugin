@@ -1,1 +1,16 @@
-WILL PUT STUFF HERE kthxbai
+Sublimetext2-Subversion-plugin
+Plugin to provide subversion support to Sublimetext2
+
+Written by Timmy Sjöstedt and Patrik Ring
+
+INSTALL
+	1. Add the file subversion.py to (...)/Packages/User
+
+	2. Put the following lines in your local .sublime-keymap (Preferences->User key bindings)
+		{ "keys": ["ctrl+alt+c"], "command": "subversion", "args": {"cmd": "commit"} },
+		{ "keys": ["ctrl+alt+u"], "command": "subversion", "args": {"cmd": "update"} },	
+		{ "keys": ["ctrl+alt+a"], "command": "subversion", "args": {"cmd": "add"} },
+		{ "keys": ["ctrl+alt+f"], "command": "subversion", "args": {"cmd": "togglefolders"} }
+	
+	3. ???
+	4. PROFIT!!!
