@@ -1,7 +1,7 @@
 ##
 ## Subversion for Sublime Text 2
 ## @version 0.2
-## @author Timmy Sjöstedt
+## @author Timmy Sjostedt
 ## @author Patrik Ring
 ## @license GPL
 ##
@@ -13,6 +13,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit, cmd):
 		if cmd == "togglefolders": # Toggle the use of folders
+			print 'Men...'
 			newbool = not self.settings.get('usefolder')
 			self.settings.set('usefolder', newbool)
 			if newbool:
