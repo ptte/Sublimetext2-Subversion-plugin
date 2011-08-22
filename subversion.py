@@ -13,7 +13,6 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit, cmd):
 		if cmd == "togglefolders": # Toggle the use of folders
-			print 'Men...'
 			newbool = not self.settings.get('usefolder')
 			self.settings.set('usefolder', newbool)
 			if newbool:
