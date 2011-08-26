@@ -1,7 +1,8 @@
 ##
+## coding: UTF-8
 ## Subversion for Sublime Text 2
 ## @version 0.2
-## @author Timmy Sjostedt
+## @author Timmy Sjöstedt
 ## @author Patrik Ring
 ## @license GPL
 ##
@@ -71,10 +72,14 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
 	def do_commit(self, path, message):
 		self.settings.set("commitmessage", message)
-		self.execute(["svn", "commit", path, "--non-interactive", "-m", message])
+		ret = self.execute(["svn", "commit", path, "--non-interactive", "-m", message])
+
+		self.print_in_new_file(ret['stderr'] + ret['stdout'])
 	
 	def do_update(self, path):
-		self.execute(["svn", "update", path])
+		ret = self.execute(["svn", "update", path])
+
+		self.print_in_new_file(ret['stderr'] + ret['stdout'])
 
 	def do_add(self,path):
 		ret = self.execute(['svn st ' + path + ' | grep ^? | sed s/?// | xargs -r svn add $1'],True,True)
@@ -84,12 +89,20 @@ class SubversionCommand(sublime_plugin.TextCommand):
 	def execute(self, command, showoutput = True,use_shell = False):
 		p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=use_shell)
 		stderr = p.stderr.read()
-		stdout = p.stdout.read().replace("\n", " ")
+		stdout = p.stdout.read()
+		stdout_oneline = stdout.replace("\n", " ")
 
 		if showoutput:
-			sublime.status_message("SVN: " + stdout)
+			sublime.status_message("SVN: " + stdout_oneline)
 
 		if showoutput and stderr != "":
 			sublime.error_message(stderr)
 		
-		return {"stdout":stdout, "stderr":stderr}
+		return {"stdout":stdout, "stdout_oneline":stdout_oneline, "stderr":stderr}
+	
+	def print_in_new_file(self, text):
+		new = self.view.window().new_file()
+		edit = new.begin_edit()
+		new.insert(edit, 0, text)
+		new.end_edit(edit)
+		new.set_scratch(True)
